@@ -1,0 +1,75 @@
+﻿@model luchadores.Models.Verb
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Verb</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstLetter)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FirstLetter)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Tense)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Tense)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Form1)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Form1)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Form2)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Form2)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Form3)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Form3)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Form4)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Form4)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Form5)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Form5)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Form6)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Form6)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ID" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

@@ -1,0 +1,110 @@
+﻿@model X.PagedList.IPagedList<luchadores.Models.Verb>
+@using X.PagedList.Mvc.Core
+@using X.PagedList;
+
+
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Find by name: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
+
+@using (Html.BeginForm())
+{
+
+    @Html.DropDownList("letter",
+                        new SelectList(Enum.GetValues(typeof(Letter))),
+                        "Select Letter",
+                        new { @class = "form-control"  , @onchange = "this.form.submit();" })
+
+}
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                FirstLetter
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Tense
+            </th>
+            <th>
+                Form1
+            </th>
+            <th>
+                Form2
+            </th>
+            <th>
+                Form3
+            </th>
+            <th>
+                Form4
+            </th>
+            <th>
+                Form5
+            </th>
+            <th>
+                Form6
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstLetter)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tense)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Form1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Form2)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Form3)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Form4)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Form5)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Form6)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
